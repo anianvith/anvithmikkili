@@ -1,0 +1,59 @@
+#include <iostream>
+
+class Height {
+private:
+    int feet;
+    double inches;
+
+public:
+    // Default constructor
+    Height() : feet(0), inches(0.0) {}
+
+    // Method to set height in different formats
+    void setHeight(int _feet) {
+        feet = _feet;
+        inches = 0.0;
+    }
+
+    void setHeight(double _feetFraction) {
+        feet = static_cast<int>(_feetFraction);
+        inches = (_feetFraction - static_cast<double>(feet)) * 12.0;
+    }
+
+    void setHeight(int _feet, double _inches) {
+        feet = _feet;
+        inches = _inches;
+    }
+
+    // Method to display the height
+    void show() {
+        std::cout << "Feet=" << feet << " inches=" << inches << std::endl;
+    }
+};
+
+int main() {
+    Height h1, h2, h3;
+
+    // Input for h1
+    int feet1;
+    std::cin >> feet1;
+    h1.setHeight(feet1);
+
+    // Input for h2
+    double feetFraction2;
+    std::cin >> feetFraction2;
+    h2.setHeight(feetFraction2);
+
+    // Input for h3
+    int feet3;
+    double inches3;
+    std::cin >> feet3 >> inches3;
+    h3.setHeight(feet3, inches3);
+
+    // Display heights
+    h1.show();
+    h2.show();
+    h3.show();
+
+    return 0;
+}
